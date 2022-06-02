@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
+import { ColorSchemeName, Pressable, StyleSheet } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -16,6 +16,10 @@ import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
+import HomeScreen from '../screens/HomeScreen'
+import LoginScreen from '../screens/LoginScreen'
+import SignupScreen from '../screens/SignupScreen'
+
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -36,8 +40,20 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
+  const authHeaderOptions = {
+    headerStyle: styles.header, 
+    headerTintColor: '#fff', 
+    headerTitleStyle: {
+      fontWeight: 'bold', 
+      color: 'white'
+    }
+  }
   return (
     <Stack.Navigator>
+      <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
+      <Stack.Screen options={authHeaderOptions} name="Login" component={LoginScreen} />
+      <Stack.Screen options={authHeaderOptions} name="Signup" component={SignupScreen} />
+
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
@@ -105,3 +121,10 @@ function TabBarIcon(props: {
 }) {
   return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
 }
+
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: '#5e3283',
+    color: 'white'
+  }
+})
