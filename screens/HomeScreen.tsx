@@ -1,13 +1,13 @@
 import { Pressable, StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
+import Colors from '../constants/Colors';
 
 export default function TabTwoScreen({navigation}:any) {
   return (
     <View style={styles.container}>
 
-      <View>
-        <Text style={styles.title}> NanoChat. </Text>
-      </View>
+        <Text style={styles.title}> nanoChat. </Text>
+
 
       <Pressable style={styles.button} onPress={() => navigation.replace('Login')}>
         <Text style={styles.text}>Login</Text>
@@ -26,12 +26,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: Colors.dark.secondary,
+
   },
   title: {
     fontSize: 45,
     fontWeight: 'bold',
     marginBottom: 20,
-    color: '#5e3283'
+    color: Colors.dark.primary
   },
 
   buttonOutlined: {
@@ -43,14 +45,15 @@ const styles = StyleSheet.create({
     elevation: 3,
     backgroundColor: 'white',
     borderWidth: 2,
-    borderColor: '#5e3283'
+    borderColor: Colors.dark.primary,
+    width:150
   },
   signupText: {
     fontSize: 16,
     lineHeight: 21,
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: '#5e3283',
+    color: Colors.dark.primary,
   },
   button: {
     marginVertical: 10,
@@ -60,13 +63,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 4,
     elevation: 3,
-    backgroundColor: '#5e3283'
+    backgroundColor: Colors.dark.primary,
+    width:150
   },
   text: {
     fontSize: 16,
     lineHeight: 21,
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: 'white',
+    color: '#fff',
   },
 });

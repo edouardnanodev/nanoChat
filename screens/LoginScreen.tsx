@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, TextInput } from 'react-native';
 import { Text, View } from '../components/Themed';
+import Colors from '../constants/Colors';
 
 export default function TabTwoScreen({ navigation }: any) {
     const [email, setEmail] = useState('')
@@ -10,14 +11,15 @@ export default function TabTwoScreen({ navigation }: any) {
     return (
         <View style={styles.container}>
 
-            <View>
+
                 <Text style={styles.title}> Login. </Text>
-            </View>
+
             <TextInput
                 style={styles.input}
                 onChangeText={setEmail}
                 value={email}
                 placeholder="Email"
+                placeholderTextColor="grey"
 
             />
             <TextInput
@@ -25,10 +27,11 @@ export default function TabTwoScreen({ navigation }: any) {
                 onChangeText={setPassword}
                 value={password}
                 placeholder="Password"
+                placeholderTextColor="grey"
             />
 
-            <Pressable style={styles.button} onPress={() => navigation.replace('Root')}>
-                <Text style={styles.text}>Login</Text>
+            <Pressable style={[styles.button]} onPress={() => navigation.replace('Root')}>
+                <Text style={[styles.text]}>Login</Text>
             </Pressable>
 
             <Text style={styles.linkText}> Don't have an account?
@@ -43,12 +46,15 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+    backgroundColor: Colors.dark.secondary,
+
     },
     title: {
         fontSize: 30,
         fontWeight: 'bold',
         marginBottom: 20,
-        color: '#000'
+
+
     },
     input: {
         height: 40,
@@ -67,16 +73,17 @@ const styles = StyleSheet.create({
         paddingHorizontal: 32,
         borderRadius: 4,
         elevation: 3,
-        backgroundColor: '#5e3283',
+        backgroundColor: Colors.dark.primary,
         width: 220,
-        marginBottom:20
+        marginBottom:20,
+
     },
     text: {
         fontSize: 16,
         lineHeight: 21,
         fontWeight: 'bold',
         letterSpacing: 0.25,
-        color: 'white',
+        color: '#fff',
     },
     linkText: {
         fontSize: 12,
@@ -89,6 +96,6 @@ const styles = StyleSheet.create({
     link: {
         fontSize: 12,
         fontWeight: 'bold',
-        color: "#5e3283"
+        color: Colors.dark.primary
     }
 });

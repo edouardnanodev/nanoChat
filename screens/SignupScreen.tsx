@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, TextInput } from 'react-native';
 import { Text, View } from '../components/Themed';
+import Colors from '../constants/Colors';
 
 export default function TabTwoScreen({navigation}:any) {
   const [email, setEmail] = useState('')
@@ -10,14 +11,15 @@ export default function TabTwoScreen({navigation}:any) {
   return (
     <View style={styles.container}>
 
-            <View>
+
                 <Text style={styles.title}> Signup. </Text>
-            </View>
+
             <TextInput
                 style={styles.input}
                 onChangeText={setEmail}
                 value={email}
                 placeholder="Email"
+                placeholderTextColor="grey"
 
             />
             <TextInput
@@ -25,6 +27,8 @@ export default function TabTwoScreen({navigation}:any) {
                 onChangeText={setPassword}
                 value={password}
                 placeholder="Password"
+                placeholderTextColor="grey"
+
             />
 
             <Pressable style={styles.button} onPress={() => navigation.replace('Root')}>
@@ -43,6 +47,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor:Colors.dark.secondary
 },
 title: {
     fontSize: 30,
@@ -70,7 +75,7 @@ button: {
     backgroundColor: '#fff',
     width: 220,
     marginBottom:20,
-    borderColor:'#5e3283',
+    borderColor:Colors.dark.primary,
     borderWidth:2
 },
 text: {
@@ -78,7 +83,7 @@ text: {
     lineHeight: 21,
     fontWeight: 'bold',
     letterSpacing: 0.25,
-    color: '#5e3283',
+    color: Colors.dark.primary,
 
 },
 linkText: {
@@ -92,6 +97,6 @@ linkText: {
 link: {
     fontSize: 12,
     fontWeight: 'bold',
-    color: "#5e3283"
+    color: Colors.dark.primary
 }
 });
